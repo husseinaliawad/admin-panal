@@ -54,7 +54,10 @@ class BrandsResource extends Resource
                         ]),
                     FileUpload::make('image')
                         ->image()
-                        ->directory('brands'),
+                        ->disk('public_brands')
+                        ->directory('')
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp'])
+                        ->maxSize(2048),
                     Toggle::make('is_active')
                         ->required()
                         ->default(true),
@@ -70,6 +73,7 @@ class BrandsResource extends Resource
                 TextColumn::make('name')
                 ->searchable(),
                 ImageColumn::make('image')
+                ->disk('public_brands')
                 ->searchable(),
                 TextColumn::make('slug')
                 ->searchable(),

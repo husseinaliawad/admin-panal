@@ -53,7 +53,10 @@ class CategoryResource extends Resource
                         ]),
                     FileUpload::make('image')
                         ->image()
-                        ->directory('categories'),
+                        ->disk('public_categories')
+                        ->directory('')
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp'])
+                        ->maxSize(2048),
                     Toggle::make('is_active')
                         ->required()
                         ->default(true),
@@ -70,6 +73,7 @@ class CategoryResource extends Resource
                 TextColumn::make('name')
                 ->searchable(),
                 ImageColumn::make('image')
+                ->disk('public_categories')
                 ->searchable(),
                 TextColumn::make('slug')
                 ->searchable(),

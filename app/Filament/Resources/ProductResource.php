@@ -70,8 +70,11 @@ class ProductResource extends Resource
           Section::make('images')->schema([
                 FileUpload::make('images')
                     ->multiple()
-                    ->directory('products')
+                    ->disk('public_products')
+                    ->directory('')
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp'])
                     ->maxFiles(5)
+                    ->maxSize(2048)
            
             
           ])         

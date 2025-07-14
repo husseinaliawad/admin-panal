@@ -56,6 +56,30 @@ return [
             'throw' => false,
         ],
 
+        'public_brands' => [
+            'driver' => 'local',
+            'root' => public_path('brands'),
+            'url' => env('APP_URL').'/brands',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public_categories' => [
+            'driver' => 'local',
+            'root' => public_path('categories'),
+            'url' => env('APP_URL').'/categories',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'public_products' => [
+            'driver' => 'local',
+            'root' => public_path('products'),
+            'url' => env('APP_URL').'/products',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*

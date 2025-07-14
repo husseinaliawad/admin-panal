@@ -19,11 +19,11 @@ class ImageHelper
 
         // إذا كان المسار يبدأ بـ brands/ أو categories/ أو products/ أو images/
         if (preg_match('/^(brands|categories|products|images)\//', $imagePath)) {
-            return asset('storage/' . $imagePath);
+            return asset($imagePath);
         }
 
         // إذا كان مسار مباشر
-        return asset('storage/' . $imagePath);
+        return asset($imagePath);
     }
 
     /**
@@ -35,13 +35,13 @@ class ImageHelper
             return asset('images-/logo.jpg');
         }
         
-        // تأكد من أن المسار يبدأ بـ brands/
+        // إذا كان المسار اسم ملف فقط، أضف brands/
         $imagePath = $brand->image;
-        if (!str_starts_with($imagePath, 'brands/')) {
+        if (!str_starts_with($imagePath, 'brands/') && !str_starts_with($imagePath, '/')) {
             $imagePath = 'brands/' . $imagePath;
         }
         
-        return self::getImageUrl($imagePath);
+        return asset($imagePath);
     }
 
     /**
@@ -53,13 +53,13 @@ class ImageHelper
             return asset('images-/logo.jpg');
         }
         
-        // تأكد من أن المسار يبدأ بـ categories/
+        // إذا كان المسار اسم ملف فقط، أضف categories/
         $imagePath = $category->image;
-        if (!str_starts_with($imagePath, 'categories/')) {
+        if (!str_starts_with($imagePath, 'categories/') && !str_starts_with($imagePath, '/')) {
             $imagePath = 'categories/' . $imagePath;
         }
         
-        return self::getImageUrl($imagePath);
+        return asset($imagePath);
     }
 
     /**
@@ -74,11 +74,11 @@ class ImageHelper
             return asset('images-/logo.jpg');
         }
         
-        // تأكد من أن المسار يبدأ بـ products/
-        if (!str_starts_with($imagePath, 'products/')) {
+        // إذا كان المسار اسم ملف فقط، أضف products/
+        if (!str_starts_with($imagePath, 'products/') && !str_starts_with($imagePath, '/')) {
             $imagePath = 'products/' . $imagePath;
         }
         
-        return self::getImageUrl($imagePath);
+        return asset($imagePath);
     }
 } 
