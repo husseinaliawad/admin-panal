@@ -18,6 +18,7 @@ class User extends Authenticatable implements FilamentUser
         'email',
         'email_verified_at',
         'password',
+        'is_admin',
     ];
 
     protected $hidden = [
@@ -40,7 +41,7 @@ class User extends Authenticatable implements FilamentUser
     // Diese Methode ist für Filament 2.x und wird vom Interface verlangt!
     public function canAccessFilament(): bool
     {
-        return $this->email === 'queen2026@gmail.com';
+        return $this->is_admin == 1;
     }
 
     // Optional: Für Filament 3.x (Panels)
