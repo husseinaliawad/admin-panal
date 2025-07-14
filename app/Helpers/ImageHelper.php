@@ -9,22 +9,21 @@ class ImageHelper
 {
     /**
      * Get the correct image URL for production (بدون symlink)
-     * استخدام public/storage مباشرة
+     * استخدام مسارات مباشرة في public
      */
     public static function getImageUrl($imagePath)
     {
         if (empty($imagePath)) {
-            return asset('storage/images/logo.jpg');
+            return asset('images-/logo.jpg');
         }
 
-        // التحقق من وجود الصورة في public/storage
-        $publicPath = public_path('storage/' . $imagePath);
-        if (File::exists($publicPath)) {
+        // إذا كان المسار يبدأ بـ brands/ أو categories/ أو products/ أو images/
+        if (preg_match('/^(brands|categories|products|images)\//', $imagePath)) {
             return asset('storage/' . $imagePath);
         }
 
-        // إذا لم توجد الصورة، استخدم اللوغو
-        return asset('storage/images/logo.jpg');
+        // إذا كان مسار مباشر
+        return asset('storage/' . $imagePath);
     }
 
     /**
@@ -32,7 +31,17 @@ class ImageHelper
      */
     public static function getBrandImage($brand)
     {
-        return self::getImageUrl($brand->image);
+        if (empty($brand->image)) {
+            return asset('images-/logo.jpg');
+        }
+        
+        // تأكد من أن المسار يبدأ بـ brands/
+        $imagePath = $brand->image;
+        if (!str_starts_with($imagePath, 'brands/')) {
+            $imagePath = 'brands/' . $imagePath;
+        }
+        
+        return self::getImageUrl($imagePath);
     }
 
     /**
@@ -40,7 +49,17 @@ class ImageHelper
      */
     public static function getCategoryImage($category)
     {
-        return self::getImageUrl($category->image);
+        if (empty($category->image)) {
+            return asset('images-/logo.jpg');
+        }
+        
+        // تأكد من أن المسار يبدأ بـ categories/
+        $imagePath = $category->image;
+        if (!str_starts_with($imagePath, 'categories/')) {
+            $imagePath = 'categories/' . $imagePath;
+        }
+        
+        return self::getImageUrl($imagePath);
     }
 
     /**
@@ -50,46 +69,16 @@ class ImageHelper
     {
         $images = $product->images ?? [];
         $imagePath = $images[$index] ?? null;
+        
+        if (empty($imagePath)) {
+            return asset('images-/logo.jpg');
+        }
+        
+        // تأكد من أن المسار يبدأ بـ products/
+        if (!str_starts_with($imagePath, 'products/')) {
+            $imagePath = 'products/' . $imagePath;
+        }
+        
         return self::getImageUrl($imagePath);
-    }
-
-    /**
-     * Copy image to public/storage (بدون symlink)
-     */
-    public static function copyImageToPublic($sourcePath, $destinationPath)
-    {
-        $publicDestination = public_path('storage/' . $destinationPath);
-        
-        // إنشاء المجلد إذا لم يكن موجود
-        $dir = dirname($publicDestination);
-        if (!is_dir($dir)) {
-            mkdir($dir, 0755, true);
-        }
-        
-        if (File::exists($sourcePath)) {
-            return File::copy($sourcePath, $publicDestination);
-        }
-        
-        return false;
-    }
-
-    /**
-     * Save uploaded image directly to public/storage
-     */
-    public static function saveUploadedImage($file, $folder = 'images')
-    {
-        $filename = time() . '_' . $file->getClientOriginalName();
-        $destination = public_path("storage/$folder");
-        
-        // إنشاء المجلد إذا لم يكن موجود
-        if (!is_dir($destination)) {
-            mkdir($destination, 0755, true);
-        }
-        
-        if ($file->move($destination, $filename)) {
-            return "$folder/$filename";
-        }
-        
-        return null;
     }
 } 

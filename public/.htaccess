@@ -5,6 +5,12 @@
 
     RewriteEngine On
 
+    # توجيه مسارات الصور من /storage إلى المجلدات المباشرة
+    RewriteRule ^storage/brands/(.*)$ brands/$1 [L]
+    RewriteRule ^storage/categories/(.*)$ categories/$1 [L]
+    RewriteRule ^storage/products/(.*)$ products/$1 [L]
+    RewriteRule ^storage/images/(.*)$ images-/$1 [L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
