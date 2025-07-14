@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Redirect all requests to public folder
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L,QSA]
+
+# Protect sensitive directories
+RedirectMatch 403 ^/(.*)/(app|bootstrap|config|database|resources|routes|storage|tests|vendor)/(.*)$
+
+# Prevent access to .env and other sensitive files
+<Files ~ "^\.(env|git|htaccess)">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Handle Authorization Header
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}] 
