@@ -5,6 +5,12 @@
 
     RewriteEngine On
 
+    # إعادة توجيه من /public/folder إلى /folder (إصلاح مسارات خاطئة)
+    RewriteRule ^public/brands/(.*)$ /brands/$1 [R=301,L]
+    RewriteRule ^public/categories/(.*)$ /categories/$1 [R=301,L]
+    RewriteRule ^public/products/(.*)$ /products/$1 [R=301,L]
+    RewriteRule ^public/images/(.*)$ /images-/$1 [R=301,L]
+
     # توجيه مسارات الصور من /storage إلى المجلدات المباشرة
     RewriteRule ^storage/brands/(.*)$ brands/$1 [L]
     RewriteRule ^storage/categories/(.*)$ categories/$1 [L]
