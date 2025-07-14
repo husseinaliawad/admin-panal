@@ -162,7 +162,7 @@
        <!-- -------------------navbar------------------------------ -->
 <div class="header">
 	<!-- Logo -->
-	<img class="logo" src="images/logo1.jpeg" alt="cics Logo">
+	<img class="logo" src="{{asset('storage/images/logo1.jpeg')}}" alt="cics Logo">
 </div>
 <nav class="nav-menu">
 	<a class="nav-item" href="home.html">

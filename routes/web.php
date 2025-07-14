@@ -38,6 +38,21 @@ Route::get('/products/{slug}', ProductDetailPage::class);
 // Route::get('/my-orders', MyordersPage::class);
 // Route::get('/my-orders/{order}', MyorderDetailPage::class);
 
+// Image serving route (fallback for when storage link doesn't exist)
+Route::get('/serve-image/{path}', function ($path) {
+    $fullPath = storage_path('app/public/' . $path);
+    
+    if (!file_exists($fullPath)) {
+        abort(404);
+    }
+    
+    $mimeType = mime_content_type($fullPath);
+    
+    return response()->file($fullPath, [
+        'Content-Type' => $mimeType,
+    ]);
+})->where('path', '.*')->name('serve.image');
+
 
 
 

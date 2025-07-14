@@ -11,7 +11,7 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
                     <img class="h-[5rem] w-[5rem]"
-                        src="{{url('storage', $category->image)}}"
+                        src="{{\App\Helpers\ImageHelper::getCategoryImage($category)}}"
                         alt="{{$category->name}}">
                     <div class="ms-3">
                         <h3

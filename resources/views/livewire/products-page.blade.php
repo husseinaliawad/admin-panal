@@ -111,7 +111,7 @@
                 <div class="relative bg-gray-200">
                 <a href="{{ url('products/' . $product->slug) }}" class="">
       
-                <img src="{{url('storage', $product->images[0])}}" alt="{{$product->name}}"
+                <img src="{{\App\Helpers\ImageHelper::getProductImage($product, 0)}}" alt="{{$product->name}}"
                 class="object-cover w-full h-56 mx-auto ">
                 </>
                 </div>

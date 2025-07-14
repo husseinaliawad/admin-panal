@@ -12,8 +12,8 @@
 
 @foreach ($product->images as $image)
 
-    <div class="w-1/2 p-2 sm:w-1/4" x-on:click="mainImage='{{url('storage', $product->images[0])}}'">
-        <img src="{{url('storage', $image)}}" alt="{{$product->name}}"
+    <div class="w-1/2 p-2 sm:w-1/4" x-on:click="mainImage='{{\App\Helpers\ImageHelper::getProductImage($product, 0)}}'">
+        <img src="{{\App\Helpers\ImageHelper::getImageUrl($image)}}" alt="{{$product->name}}"
             class="object-cover w-full lg:h-20 cursor-pointer hover:border hover:border-blue-500">
     </div>
 

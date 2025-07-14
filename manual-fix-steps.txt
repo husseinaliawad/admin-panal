@@ -1,0 +1,63 @@
+🔧 Manual Fix Steps via cPanel File Manager
+===========================================
+
+1. LOGIN TO CPANEL
+   - Go to your hosting control panel
+   - Open File Manager
+   - Navigate to: /public_html/
+
+2. CHECK CURRENT STRUCTURE
+   - Look for folder: storage/app/public/brands/
+   - Check if public/storage exists (should NOT exist as folder)
+
+3. CREATE SYMBOLIC LINK
+   Option A: If Terminal is available in File Manager
+   - Open Terminal
+   - Run: ln -s ../storage/app/public public/storage
+   
+   Option B: Manual creation
+   - Delete public/storage if it exists as folder
+   - Create new folder: public/storage
+   - Inside public/storage, create symbolic link to: ../../storage/app/public
+
+4. SET PERMISSIONS
+   - Right-click on storage folder → Permissions → 775
+   - Right-click on bootstrap/cache → Permissions → 775
+   - Right-click on public/storage → Permissions → 775
+
+5. TEST IMAGES
+   Test these URLs in browser:
+   - https://completitcompservice.de/storage/brands/apple.jpg
+   - https://completitcompservice.de/storage/brands/samsung.jpg
+   - https://completitcompservice.de/images-/logo.jpg
+
+6. CLEAR CACHE (if possible)
+   Create a file clear-cache.php with:
+   <?php
+   exec('php artisan config:clear');
+   exec('php artisan route:clear');
+   exec('php artisan view:clear');
+   echo "Cache cleared!";
+   ?>
+   
+   Run: https://completitcompservice.de/clear-cache.php
+
+7. VERIFY WEBSITE
+   - Go to: https://completitcompservice.de
+   - Check if "Browse Popular Brands" images are loading
+
+ALTERNATIVE SOLUTION:
+====================
+If symbolic links don't work, copy the entire contents of:
+storage/app/public/brands/
+TO:
+public/storage/brands/
+
+This creates a physical copy instead of a symbolic link.
+
+CONTACT HOSTING SUPPORT:
+========================
+If none of the above works, contact your hosting provider about:
+1. SSH access issues (/sbin/nologin error)
+2. Symbolic link support
+3. Storage link creation for Laravel applications 

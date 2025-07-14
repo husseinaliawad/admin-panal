@@ -7,7 +7,7 @@
                 <div class="@container">
                     <div class="@[480px]:p-4">
                         <div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-start justify-start px-4 pb-10 @[480px]:px-10"
-                            style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url({{ asset('images-/bg.jpg')}});'>
+                            style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url({{ asset('storage/images/bg.jpg')}});'>
     
                             <div class="flex flex-col gap-2 text-left pt-20 pb-10">
                                 <h1
@@ -71,7 +71,7 @@
 
     <div class="bg-white rounded-lg shadow-md dark:bg-gray-800" wire:key="{{ $brand->id}}">
         <a href="/products?selected_brands[0]={{$brand->id}}" class="">
-            <img src="{{url('storage', $brand->image)}}" alt="{{$brand->name}}"
+            <img src="{{\App\Helpers\ImageHelper::getBrandImage($brand)}}" alt="{{$brand->name}}"
                 class="object-cover w-full h-64 rounded-t-lg">
         </a>
         <div class="p-5 text-center">
@@ -126,7 +126,7 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
                     <img class="h-[2.375rem] w-[2.375rem] rounded-full"
-                        src="{{url('storage', $category->image)}}"
+                        src="{{\App\Helpers\ImageHelper::getCategoryImage($category)}}"
                         alt="{{$category->name}}">
                     <div class="ms-3">
                         <h3
