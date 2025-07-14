@@ -1,0 +1,21 @@
+# ملف .htaccess للمجلد الجذر (public_html)
+# يجب نسخ هذا الملف إلى public_html/.htaccess
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # إعادة توجيه من أي مسار يحتوي على /public/ إلى نفس المسار بدون /public/
+    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
+    RewriteRule ^ /%1 [R=301,L]
+
+    # توجيه جميع الطلبات غير الموجودة إلى مجلد public
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# تعليمات الاستخدام:
+# 1. انسخ محتوى هذا الملف
+# 2. أنشئ ملف .htaccess في مجلد public_html
+# 3. ألصق المحتوى في الملف الجديد
+# 4. احفظ الملف 

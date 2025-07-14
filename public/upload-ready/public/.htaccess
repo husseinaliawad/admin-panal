@@ -5,9 +5,11 @@
 
     RewriteEngine On
 
-    # إعادة توجيه من أي مسار يحتوي على /public/ إلى نفس المسار بدون /public/
-    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
-    RewriteRule ^ /%1 [R=301,L]
+    # إعادة توجيه من /public/folder إلى /folder (إصلاح مسارات خاطئة)
+    RewriteRule ^public/brands/(.*)$ /brands/$1 [R=301,L]
+    RewriteRule ^public/categories/(.*)$ /categories/$1 [R=301,L]
+    RewriteRule ^public/products/(.*)$ /products/$1 [R=301,L]
+    RewriteRule ^public/images/(.*)$ /images-/$1 [R=301,L]
 
     # توجيه مسارات الصور من /storage إلى المجلدات المباشرة
     RewriteRule ^storage/brands/(.*)$ brands/$1 [L]
