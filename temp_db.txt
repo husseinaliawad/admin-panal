@@ -1,0 +1,1 @@
+DB_DATABASE=C:\Users\User\Desktop\admin-panal\database\database.sqlite

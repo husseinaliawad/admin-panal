@@ -1,0 +1,161 @@
+/* تخصيص ألوان Filament Admin Panel */
+
+/* الألوان الأساسية */
+:root {
+    --primary: #ea580c;
+    --primary-50: #fff7ed;
+    --primary-100: #ffedd5;
+    --primary-200: #fed7aa;
+    --primary-300: #fdba74;
+    --primary-400: #fb923c;
+    --primary-500: #f97316;
+    --primary-600: #ea580c;
+    --primary-700: #c2410c;
+    --primary-800: #9a3412;
+    --primary-900: #7c2d12;
+}
+
+/* تخصيص الأزرار */
+.filament-button-primary {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.3);
+    transition: all 0.3s ease;
+}
+
+.filament-button-primary:hover {
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px -1px rgba(249, 115, 22, 0.4);
+}
+
+/* تخصيص الروابط */
+.filament-link {
+    color: #ea580c;
+    transition: color 0.2s ease;
+}
+
+.filament-link:hover {
+    color: #c2410c;
+}
+
+/* تخصيص الـ Navigation */
+.filament-sidebar-nav-item.active {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border-left: 4px solid #ea580c;
+}
+
+.filament-sidebar-nav-item.active .filament-sidebar-nav-item-icon,
+.filament-sidebar-nav-item.active .filament-sidebar-nav-item-label {
+    color: #ea580c;
+}
+
+/* تخصيص الـ Header */
+.filament-header {
+    background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+    border-bottom: 1px solid #fed7aa;
+}
+
+/* تخصيص الـ Cards */
+.filament-card {
+    border: 1px solid #fed7aa;
+    box-shadow: 0 1px 3px 0 rgba(249, 115, 22, 0.1);
+    transition: all 0.3s ease;
+}
+
+.filament-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2);
+    transform: translateY(-1px);
+}
+
+/* تخصيص الـ Forms */
+.filament-form-field input:focus,
+.filament-form-field select:focus,
+.filament-form-field textarea:focus {
+    border-color: #ea580c;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* تخصيص الـ Tables */
+.filament-table-header {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border-bottom: 2px solid #ea580c;
+}
+
+.filament-table-row:hover {
+    background: #fff7ed;
+}
+
+/* تخصيص الـ Badges */
+.filament-badge-primary {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color: white;
+    box-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
+}
+
+/* تخصيص الـ Notifications */
+.filament-notification-success {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+}
+
+.filament-notification-error {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.filament-notification-warning {
+    background: linear-gradient(135deg, #eab308 0%, #d97706 100%);
+}
+
+/* تخصيص الـ Login Page */
+.filament-login-card {
+    background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+    border: 1px solid #fed7aa;
+    box-shadow: 0 10px 25px rgba(249, 115, 22, 0.15);
+}
+
+.filament-login-button {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.3);
+    transition: all 0.3s ease;
+}
+
+.filament-login-button:hover {
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px -1px rgba(249, 115, 22, 0.4);
+}
+
+/* تأثيرات إضافية */
+.filament-page-heading {
+    color: #7c2d12;
+    background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* تخصيص الـ Sidebar */
+.filament-sidebar {
+    background: linear-gradient(180deg, #ffffff 0%, #fff7ed 100%);
+    border-right: 1px solid #fed7aa;
+}
+
+.filament-sidebar-brand {
+    border-bottom: 1px solid #fed7aa;
+}
+
+/* تخصيص الـ Stats Cards */
+.filament-stats-card {
+    background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+    border: 1px solid #fed7aa;
+    box-shadow: 0 2px 4px rgba(249, 115, 22, 0.1);
+}
+
+.filament-stats-card-value {
+    color: #ea580c;
+}
+
+.filament-stats-card-icon {
+    color: #f97316;
+} 
